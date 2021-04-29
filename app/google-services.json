@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "963235482569",
+    "project_id": "jerusalem-city-5c6b1",
+    "storage_bucket": "jerusalem-city-5c6b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963235482569:android:9672e57481e4bbfde5b618",
+        "android_client_info": {
+          "package_name": "com.iug.jerusalem_city"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963235482569-mednsb5nfdblbnpuh6sj3aqobs602bkk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iug.jerusalem_city",
+            "certificate_hash": "bd21bcf851f9b1607b2a656685f4f12fc74574c8"
+          }
+        },
+        {
+          "client_id": "963235482569-ta004sqvpaffsqundf87lbl920cm3106.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaUpH7t6ufphAU5anEwj5F8OoLDGtjqDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963235482569-ta004sqvpaffsqundf87lbl920cm3106.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
