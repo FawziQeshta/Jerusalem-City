@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="182dp"
+    android:background="@color/colorMenuHeader">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/almarai_extra_bold"
+        android:gravity="center"
+        android:text="دليل بيت المقدس"
+        android:textColor="#FFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

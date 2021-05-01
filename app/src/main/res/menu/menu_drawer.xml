@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_drawer_home_icon"
+            android:icon="@drawable/ic_home"
+            android:title="الرئيسية"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_info_of_city_icon"
+            android:icon="@drawable/ic_info"
+            android:title="معلومات عن المدينة"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_history_city_icon"
+            android:icon="@drawable/ic_history"
+            android:title="تاريخ المدينة"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_climate_icon"
+            android:icon="@drawable/ic_climant"
+            android:title="مناخ المدينة"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_touristical_monuments_icon"
+            android:icon="@drawable/ic_dome_of_the_rock"
+            android:title="أهم المعالم السياحية"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_news_icon"
+            android:icon="@drawable/ic_last_news"
+            android:title="اخر الاخبار"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_settings_icon"
+            android:icon="@drawable/ic_settings"
+            android:title="الاعدادات"
+            app:showAsAction="always"/>
+    </group>
+
+</menu>
