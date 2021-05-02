@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.ui;
+package com.iug.jerusalem_city.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.iug.jerusalem_city.R;
+import com.iug.jerusalem_city.ui.main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

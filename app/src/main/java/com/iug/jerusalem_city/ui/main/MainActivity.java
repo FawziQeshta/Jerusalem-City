@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.ui;
+package com.iug.jerusalem_city.ui.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.mainDrawerLayout, binding.mainNavigationView, binding.mainToolbar);
+        NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.mainDrawerLayout, binding.mainNavigationView, binding.mainToolbar, binding.mainMenu);
         super.onStart();
     }
 }

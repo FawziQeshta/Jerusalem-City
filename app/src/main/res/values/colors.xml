@@ -14,4 +14,7 @@
     <color name="colorBlackLight">#101010</color>
     <color name="colorMenuHeader">#00838F</color>
 
+    <color name="colorBgVideo">#211F20</color>
+
+
 </resources>

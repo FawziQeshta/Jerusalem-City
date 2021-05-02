@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.ui;
+package com.iug.jerusalem_city.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 

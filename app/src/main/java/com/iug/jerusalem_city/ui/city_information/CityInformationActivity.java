@@ -44,7 +44,7 @@ public class CityInformationActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.infoDrawerLayout, binding.infoNavigationView, binding.infoToolbar);
+        NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.infoDrawerLayout, binding.infoNavigationView, binding.infoToolbar, binding.infoMenu);
         super.onStart();
     }
 

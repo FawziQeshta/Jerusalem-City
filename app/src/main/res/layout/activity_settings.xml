@@ -7,7 +7,7 @@
     android:background="@color/colorSilverLite"
     android:layoutDirection="rtl"
     android:orientation="vertical"
-    tools:context=".ui.SettingsActivity">
+    tools:context=".ui.settings.SettingsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/setting_toolbar"

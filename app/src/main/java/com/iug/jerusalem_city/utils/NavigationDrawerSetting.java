@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,16 +16,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.iug.jerusalem_city.R;
+import com.iug.jerusalem_city.ui.city_history.HistoryCityActivity;
 import com.iug.jerusalem_city.ui.city_information.CityInformationActivity;
-import com.iug.jerusalem_city.ui.MainActivity;
-import com.iug.jerusalem_city.ui.SettingsActivity;
+import com.iug.jerusalem_city.ui.main.MainActivity;
+import com.iug.jerusalem_city.ui.settings.SettingsActivity;
 
 public class NavigationDrawerSetting {
 
     private static DrawerLayout mDrawerLayout;
 
     public static NavigationView setUpNavigationDrawer(final String hostScreen, Activity activity,
-                                                       DrawerLayout drawerLayout, NavigationView navigationView, Toolbar toolbar) {
+                                                       DrawerLayout drawerLayout, NavigationView navigationView,
+                                                       Toolbar toolbar, LinearLayout ivContainer) {
 
         mDrawerLayout = drawerLayout;
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(activity, drawerLayout, toolbar,
@@ -62,6 +65,18 @@ public class NavigationDrawerSetting {
                         }
                         break;
 
+                    case R.id.menu_drawer_history_city_icon:
+                        if (!hostScreen.equals("HistoryCityActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intentSettings = new Intent(activity.getBaseContext(), HistoryCityActivity.class);
+                                    activity.startActivity(intentSettings);
+                                }
+                            }, 280);
+                        }
+                        break;
+
                     case R.id.menu_drawer_settings_icon:
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -79,8 +94,8 @@ public class NavigationDrawerSetting {
             }
         });
 
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationIcon(null);
+        ivContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openMenu();

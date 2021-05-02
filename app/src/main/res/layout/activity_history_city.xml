@@ -2,21 +2,21 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/info_drawerLayout"
+    android:id="@+id/history_drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSilverLite"
     android:animateLayoutChanges="false"
+    android:background="@color/colorSilverLite"
     android:fitsSystemWindows="true"
     android:layoutDirection="rtl"
-    tools:context=".ui.city_information.CityInformationActivity">
+    tools:context=".ui.city_history.HistoryCityActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/info_toolbar"
+            android:id="@+id/history_toolbar"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:layout_alignParentTop="true"
@@ -33,7 +33,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/info_menu"
+                    android:id="@+id/history_menu"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:gravity="center">
@@ -51,10 +51,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
-                    android:text="معلومات عن المدينة"
-                    android:layout_weight="1"
+                    android:text="تاريخ المدينة"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
@@ -72,68 +72,24 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="12dp"
                         android:padding="0dp"
-                        app:srcCompat="@drawable/ic_back"/>
+                        app:srcCompat="@drawable/ic_back" />
                 </LinearLayout>
 
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
-        <ScrollView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHistoryTopics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/info_toolbar"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    app:cardCornerRadius="6dp">
-
-                    <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/sliderDetails"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        app:sliderAnimationDuration="600"
-                        app:sliderAutoCycleDirection="back_and_forth"
-                        app:sliderIndicatorAnimationDuration="600"
-                        app:sliderIndicatorGravity="center_horizontal|bottom"
-                        app:sliderIndicatorOrientation="horizontal"
-                        app:sliderIndicatorSelectedColor="#5A5A5A"
-                        app:sliderIndicatorUnselectedColor="#FFF"
-                        app:sliderScrollTimeInSec="1" />
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/info_title_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almarai_regular"
-                    android:gravity="right"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="12dp"
-                    android:lineSpacingExtra="6dp"
-                    android:text="معلومات عن المدينة"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-        </ScrollView>
+            android:layout_below="@+id/history_toolbar"
+            android:scrollbars="none" />
 
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/info_navigationView"
+        android:id="@+id/history_navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
