@@ -2,25 +2,24 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_drawerLayout"
+    android:id="@+id/history_drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
     android:background="@color/colorSilverLite"
     android:fitsSystemWindows="true"
     android:layoutDirection="rtl"
-    tools:context=".ui.main.MainActivity"
-    tools:openDrawer="start">
-    <!--    tools:openDrawer="start"-->
+    tools:context=".ui.city_climate.CityClimateActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_toolbar"
+            android:id="@+id/climate_toolbar"
             android:layout_width="match_parent"
             android:layout_height="57dp"
+            android:layout_alignParentTop="true"
             android:background="@color/colorToolBar"
             android:layoutDirection="rtl"
             app:contentInsetLeft="0dp"
@@ -34,7 +33,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/main_menu"
+                    android:id="@+id/climate_menu"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:gravity="center">
@@ -55,11 +54,12 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
-                    android:text="دليل بيت المقدس"
+                    android:text="مناخ المدينة"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
                 <LinearLayout
+                    android:id="@+id/back"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:gravity="center">
@@ -71,25 +71,25 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="12dp"
-                        android:padding="0dp" />
+                        android:padding="0dp"
+                        app:srcCompat="@drawable/ic_back" />
                 </LinearLayout>
 
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
-        <include
-            android:id="@+id/content_main"
-            layout="@layout/content_main"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvClimateTopics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/main_toolbar" />
+            android:layout_below="@+id/climate_toolbar"
+            android:scrollbars="none" />
 
     </RelativeLayout>
 
-
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/main_navigationView"
+        android:id="@+id/climate_navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

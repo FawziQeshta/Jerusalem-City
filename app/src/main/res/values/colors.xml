@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorStatusBar">#26C6DA</color>
+    <color name="colorToolBar">#00ACC1</color>
+    <color name="colorSilverLite">#F6F6F6</color>
+    <color name="colorBlackLight">#101010</color>
+    <color name="colorMenuHeader">#00838F</color>
+    <color name="colorGray">#9E9E9E</color>
+
+    <color name="colorBgVideo">#211F20</color>
+
+
 </resources>
