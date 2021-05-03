@@ -1,32 +1,25 @@
 package com.iug.jerusalem_city.ui.main;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.MenuItem;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityMainBinding;
-import com.iug.jerusalem_city.models.Intro;
+import com.iug.jerusalem_city.models.Section;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
-import com.iug.jerusalem_city.utils.Utilities;
+import com.iug.jerusalem_city.utils.SpacesItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private StorageReference storageRef;
+    private SectionsAdapter adapter;
+
+    private List<Section> data;
 
     private static final String TAG = "MainActivity";
 
@@ -36,59 +29,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
-
-        Intro intro = new Intro("images/2018-1091x520-c.jpg"
-                ,"تعتبر مدينة القدس مدينة مقدسة لدى اتباع الديانات الإبراهيمية الرئيسية وهي الإسلام واليهودية والمسيحية وهي أكبر مدن فلسطين التاريخية المحتلة مساحة وسكان.\n" +
-                "\n" +
-                "وتعتبر القدس ذات أهمية دينية واقتصادية وعرفت بعدة أسماء منها بيت المقدس والقدس الشريف وأولى القبلتين وغيرها.",
-                "images/2018-1091x520-c.jpg"
-                ,"إن عدد سكان القدس وفق الجهاز المركزي للإحصاء الفلسطيني يبلغ 435 ألف نسمة وهذه الإحصائية لعام 2017م.\n" +
-                "\n" +
-                "وغالبية سكان القدس هم من فئة الشباب دون سن 29 سنة، وتشمل هذه الإحصائية المناطق التي فصلها الجدار العازل عن القدس.\n" +
-                "\n" +
-                "ويوجد في القدس بشكل عام حوالي 95 ألف عائلة بمعدل 4،5 أطفال لكل عائلة وسطياً.\n" +
-                "\n" +
-                "ولا توجد في الوقت الراهن إحصائية توضع عدد سكان القدس عام 2020م.");
-
-        binding.introTitleText.setText(intro.getTitleText());
-
-//        storageRef.child(intro.getTitleImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Glide.with(getApplicationContext())
-//                        .load(uri)
-//                        .centerCrop()
-//                        .skipMemoryCache(true)
-//                        .into(binding.introTitleImage);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//                Log.e(TAG, "onFailure: " + exception.getMessage());
-//            }
-//        });
-
-        binding.introSubTitleText.setText(intro.getSubTitleText());
-
-//        storageRef.child(intro.getSubTitleImage()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                Glide.with(getApplicationContext())
-//                        .load(uri)
-//                        .centerCrop()
-//                        .skipMemoryCache(true)
-//                        .into(binding.introSubTitleImage);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//                Log.e(TAG, "onFailure: " + exception.getMessage());
-//            }
-//        });
+        getSections();
 
     }
 
@@ -97,4 +38,22 @@ public class MainActivity extends AppCompatActivity {
         NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.mainDrawerLayout, binding.mainNavigationView, binding.mainToolbar, binding.mainMenu);
         super.onStart();
     }
+
+    private void getSections() {
+        data = new ArrayList<>();
+        data.add(new Section(1, R.drawable.ic_info, "معلومات عن المدينة"));
+        data.add(new Section(2, R.drawable.ic_history, "تاريخ المدينة"));
+        data.add(new Section(3, R.drawable.ic_climant, "مناخ المدينة"));
+        data.add(new Section(4, R.drawable.ic_dome_of_the_rock, "أهم المعالم السياحية"));
+        data.add(new Section(5, R.drawable.ic_last_news, "اّخر الأخبار"));
+        data.add(new Section(6, R.drawable.ic_settings, "الإعدادت"));
+
+        adapter = new SectionsAdapter(this, data);
+        binding.contentMain.rvSections.setLayoutManager(new GridLayoutManager(this, 2));
+        binding.contentMain.rvSections.setHasFixedSize(true);
+        binding.contentMain.rvSections.addItemDecoration(new SpacesItemDecoration(10));
+        binding.contentMain.rvSections.setAdapter(adapter);
+
+    }
+
 }

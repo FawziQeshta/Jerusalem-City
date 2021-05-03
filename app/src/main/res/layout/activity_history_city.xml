@@ -9,7 +9,7 @@
     android:background="@color/colorSilverLite"
     android:fitsSystemWindows="true"
     android:layoutDirection="rtl"
-    tools:context=".ui.city_history.HistoryCityActivity">
+    tools:context=".ui.city_history.CityHistoryActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

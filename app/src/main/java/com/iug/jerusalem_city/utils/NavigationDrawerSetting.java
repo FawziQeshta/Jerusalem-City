@@ -16,10 +16,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.iug.jerusalem_city.R;
-import com.iug.jerusalem_city.ui.city_history.HistoryCityActivity;
+import com.iug.jerusalem_city.ui.city_climate.CityClimateActivity;
+import com.iug.jerusalem_city.ui.city_history.CityHistoryActivity;
 import com.iug.jerusalem_city.ui.city_information.CityInformationActivity;
+import com.iug.jerusalem_city.ui.last_news.LastNewsActivity;
 import com.iug.jerusalem_city.ui.main.MainActivity;
 import com.iug.jerusalem_city.ui.settings.SettingsActivity;
+import com.iug.jerusalem_city.ui.touristic_monuments.TouristicMonumentsActivity;
 
 public class NavigationDrawerSetting {
 
@@ -66,11 +69,47 @@ public class NavigationDrawerSetting {
                         break;
 
                     case R.id.menu_drawer_history_city_icon:
-                        if (!hostScreen.equals("HistoryCityActivity")) {
+                        if (!hostScreen.equals("CityHistoryActivity")) {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), HistoryCityActivity.class);
+                                    Intent intentSettings = new Intent(activity.getBaseContext(), CityHistoryActivity.class);
+                                    activity.startActivity(intentSettings);
+                                }
+                            }, 280);
+                        }
+                        break;
+
+                    case R.id.menu_drawer_climate_icon:
+                        if (!hostScreen.equals("CityClimateActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intentSettings = new Intent(activity.getBaseContext(), CityClimateActivity.class);
+                                    activity.startActivity(intentSettings);
+                                }
+                            }, 280);
+                        }
+                        break;
+
+                    case R.id.menu_drawer_touristical_monuments_icon:
+                        if (!hostScreen.equals("TouristicMonumentsActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intentSettings = new Intent(activity.getBaseContext(), TouristicMonumentsActivity.class);
+                                    activity.startActivity(intentSettings);
+                                }
+                            }, 280);
+                        }
+                        break;
+
+                    case R.id.menu_drawer_news_icon:
+                        if (!hostScreen.equals("LastNewsActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intentSettings = new Intent(activity.getBaseContext(), LastNewsActivity.class);
                                     activity.startActivity(intentSettings);
                                 }
                             }, 280);
