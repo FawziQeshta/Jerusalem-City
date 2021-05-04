@@ -33,6 +33,11 @@
             android:title="اخر الاخبار"
             app:showAsAction="always"/>
         <item
+            android:id="@+id/menu_drawer_add_topic_icon"
+            android:icon="@drawable/ic_add_topic"
+            android:title="اضافة موضوع"
+            app:showAsAction="always"/>
+        <item
             android:id="@+id/menu_drawer_settings_icon"
             android:icon="@drawable/ic_settings"
             android:title="الاعدادات"

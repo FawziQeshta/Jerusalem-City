@@ -52,7 +52,7 @@
             android:paddingBottom="6dp"
             android:lineSpacingExtra="6dp"
             android:text="مقدمة عن المدينة"
-            android:textColor="@color/black"
+            android:textColor="@color/colorBlackSections"
             android:textSize="16sp" />
 
     </LinearLayout>
