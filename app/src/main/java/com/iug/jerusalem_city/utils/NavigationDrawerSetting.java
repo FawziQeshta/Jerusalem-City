@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.iug.jerusalem_city.R;
+import com.iug.jerusalem_city.ui.add_topic.AddTopicActivity;
 import com.iug.jerusalem_city.ui.city_climate.CityClimateActivity;
 import com.iug.jerusalem_city.ui.city_history.CityHistoryActivity;
 import com.iug.jerusalem_city.ui.city_information.CityInformationActivity;
@@ -27,6 +28,7 @@ import com.iug.jerusalem_city.ui.touristic_monuments.TouristicMonumentsActivity;
 public class NavigationDrawerSetting {
 
     private static DrawerLayout mDrawerLayout;
+    private static Intent intent;;
 
     public static NavigationView setUpNavigationDrawer(final String hostScreen, Activity activity,
                                                        DrawerLayout drawerLayout, NavigationView navigationView,
@@ -48,8 +50,8 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), MainActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), MainActivity.class);
+                                    activity.startActivity(intent);
                                     activity.finish();
                                 }
                             }, 280);
@@ -61,8 +63,8 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), CityInformationActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), CityInformationActivity.class);
+                                    activity.startActivity(intent);
                                 }
                             }, 280);
                         }
@@ -73,8 +75,8 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), CityHistoryActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), CityHistoryActivity.class);
+                                    activity.startActivity(intent);
                                 }
                             }, 280);
                         }
@@ -85,8 +87,8 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), CityClimateActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), CityClimateActivity.class);
+                                    activity.startActivity(intent);
                                 }
                             }, 280);
                         }
@@ -97,8 +99,8 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), TouristicMonumentsActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), TouristicMonumentsActivity.class);
+                                    activity.startActivity(intent);
                                 }
                             }, 280);
                         }
@@ -109,8 +111,20 @@ public class NavigationDrawerSetting {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent intentSettings = new Intent(activity.getBaseContext(), LastNewsActivity.class);
-                                    activity.startActivity(intentSettings);
+                                    intent = new Intent(activity.getBaseContext(), LastNewsActivity.class);
+                                    activity.startActivity(intent);
+                                }
+                            }, 280);
+                        }
+                        break;
+
+                    case R.id.menu_drawer_add_topic_icon:
+                        if (!hostScreen.equals("AddTopicActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    intent = new Intent(activity.getBaseContext(), AddTopicActivity.class);
+                                    activity.startActivity(intent);
                                 }
                             }, 280);
                         }
@@ -120,8 +134,8 @@ public class NavigationDrawerSetting {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                Intent intentSettings = new Intent(activity.getBaseContext(), SettingsActivity.class);
-                                activity.startActivity(intentSettings);
+                                intent = new Intent(activity.getBaseContext(), SettingsActivity.class);
+                                activity.startActivity(intent);
                             }
                         }, 280);
                         break;

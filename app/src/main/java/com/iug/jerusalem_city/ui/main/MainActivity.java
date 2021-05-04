@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         data.add(new Section(3, R.drawable.ic_climant, "مناخ المدينة"));
         data.add(new Section(4, R.drawable.ic_dome_of_the_rock, "أهم المعالم السياحية"));
         data.add(new Section(5, R.drawable.ic_last_news, "اّخر الأخبار"));
-        data.add(new Section(6, R.drawable.ic_settings, "الإعدادت"));
+        data.add(new Section(6, R.drawable.ic_add_topic, "إضافة موضوع"));
+        data.add(new Section(7, R.drawable.ic_settings, "الإعدادت"));
 
         adapter = new SectionsAdapter(this, data);
         binding.contentMain.rvSections.setLayoutManager(new GridLayoutManager(this, 2));
