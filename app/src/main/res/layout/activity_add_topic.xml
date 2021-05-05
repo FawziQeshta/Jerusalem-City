@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSilverLite"
-    android:orientation="vertical"
+    android:fillViewport="true"
     android:layoutDirection="ltr"
     tools:context=".ui.add_topic.AddTopicActivity">
 
-    <LinearLayout
-        android:id="@+id/report_topic_content"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/add_topic_toolbar"
@@ -41,6 +38,7 @@
             android:id="@+id/et_new_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/add_topic_toolbar"
             android:layout_marginStart="14dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="14dp"
@@ -62,7 +60,8 @@
             android:id="@+id/title_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
+            android:layout_below="@+id/et_new_topic"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
@@ -77,15 +76,18 @@
             android:id="@+id/img_open_gallery"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="end"
+            android:layout_below="@+id/title_image"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="35dp"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/add_photo" />
 
         <TextView
             android:id="@+id/title_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/img_open_gallery"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
@@ -100,12 +102,13 @@
             android:id="@+id/report_topic_radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/title_section"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="16dp"
             android:layoutDirection="rtl"
-            android:visibility="visible"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <RadioButton
                 android:id="@+id/radioButton_history"
@@ -126,7 +129,7 @@
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioButton_touristic_monuments"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -136,23 +139,22 @@
 
         </RadioGroup>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_add_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/shape_btn_reload"
+            android:fontFamily="@font/almarai_bold"
+            android:text="إضافة"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btn_add_topic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="26dp"
-        android:background="@drawable/shape_btn_reload"
-        android:fontFamily="@font/almarai_bold"
-        android:text="إضافة"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</ScrollView>
