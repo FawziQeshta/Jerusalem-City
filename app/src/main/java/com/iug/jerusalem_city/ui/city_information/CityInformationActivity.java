@@ -4,20 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.databinding.ActivityCityInformationBinding;
+import com.iug.jerusalem_city.models.InformationData;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
-public class CityInformationActivity extends AppCompatActivity {
+import java.util.List;
+
+public class CityInformationActivity extends AppCompatActivity implements CityInformationPresenter.CityInformationListener {
 
     private ActivityCityInformationBinding binding;
-    private StorageReference storageRef;
 
     private static final String TAG = "CityInformationActivity";
 
@@ -27,11 +30,8 @@ public class CityInformationActivity extends AppCompatActivity {
         binding = ActivityCityInformationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
-
-        setUpSliderView(binding.sliderDetails);
+        CityInformationPresenter presenter = new CityInformationPresenter(this, this);
+        presenter.loadCityInfo();
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +48,8 @@ public class CityInformationActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    private void setUpSliderView(SliderView sliderView) {
-        SliderImagesAdapter sliderAdapter = new SliderImagesAdapter(CityInformationActivity.this);
-        sliderAdapter.addItem("images/2018-1091x520-c.jpg");
-        sliderAdapter.addItem("images/af74dc0e-43c0-4a42-93e6-6c6837c8c965.jpeg");
-        sliderAdapter.addItem("images/fdqsmudlk-8887-ssss.jpg");
+    private void setUpSliderView(SliderView sliderView, List<String> data) {
+        SliderImagesAdapter sliderAdapter = new SliderImagesAdapter(CityInformationActivity.this, data);
         sliderView.setSliderAdapter(sliderAdapter);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
@@ -66,4 +63,11 @@ public class CityInformationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void getCityInfo(InformationData data) {
+        binding.progressBar.setVisibility(View.GONE);
+        binding.containerInfo.setVisibility(View.VISIBLE);
+        setUpSliderView(binding.sliderDetails, data.getImages());
+        binding.infoTitleText.setText(data.getText());
+    }
 }

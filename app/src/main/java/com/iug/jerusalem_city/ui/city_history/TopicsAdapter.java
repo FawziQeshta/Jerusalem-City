@@ -26,6 +26,7 @@ import com.iug.jerusalem_city.models.TopicData;
 import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;
 import com.iug.jerusalem_city.ui.topic_details.TopicDetailsActivity;
 
+import java.util.Collections;
 import java.util.List;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolder> {
@@ -44,6 +45,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
         this.data = data;
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+        Collections.shuffle(data);
     }
 
     @NonNull
@@ -56,7 +58,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
     public void onBindViewHolder(@NonNull TopicHolder holder, int position) {
         TopicData topic = data.get(position);
 
-        holder.binding.tvTitle.setText(topic.getTitle());
+        holder.binding.tvTitle.setText(topic.getText());
 
         StorageReference pathReference = storageRef.child(topic.getImageUrl());
 
@@ -66,7 +68,6 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
                 Glide.with(context.getApplicationContext())
                         .load(uri)
                         .centerCrop()
-                        .skipMemoryCache(true)
                         .into(holder.binding.ivBackground);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -77,7 +78,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
             }
         });
 
-        addReadMore(holder, topic.getTitle());
+        addReadMore(holder, topic.getText());
 
         if (topic.isHasVideo()) {
             holder.binding.ivPlayVideo.setVisibility(View.VISIBLE);
@@ -102,7 +103,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
                 Intent intent = new Intent(context, TopicDetailsActivity.class);
                 intent.putExtra("image", topic.getImageUrl());
                 intent.putExtra("isVideo", topic.isHasVideo());
-                intent.putExtra("text", topic.getTitle());
+                intent.putExtra("text", topic.getText());
                 intent.putExtra("videoUrl", topic.getVideoUrl());
                 context.startActivity(intent);
             }

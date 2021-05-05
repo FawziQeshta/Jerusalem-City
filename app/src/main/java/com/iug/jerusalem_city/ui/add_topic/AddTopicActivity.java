@@ -18,7 +18,7 @@ public class AddTopicActivity extends AppCompatActivity {
         binding = ActivityAddTopicBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-           
+
 
         binding.addTopicToolbar.setNavigationIcon(R.drawable.ic_back);
         binding.addTopicToolbar.setNavigationOnClickListener(new View.OnClickListener() {

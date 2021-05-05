@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
-import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityCityClimateBinding;
 import com.iug.jerusalem_city.models.TopicData;
+import com.iug.jerusalem_city.ui.city_history.CityHistoryPresenter;
 import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityClimateActivity extends AppCompatActivity {
+public class CityClimateActivity extends AppCompatActivity implements CityClimatePresenter.CityClimateListener {
 
     private ActivityCityClimateBinding binding;
 
@@ -30,7 +30,10 @@ public class CityClimateActivity extends AppCompatActivity {
         binding = ActivityCityClimateBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loadData();
+        initRecyclerView();
+
+        CityClimatePresenter presenter = new CityClimatePresenter(this, this);
+        presenter.loadClimateTopics();
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,17 +50,20 @@ public class CityClimateActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    private void loadData() {
+    private void initRecyclerView() {
         data = new ArrayList<>();
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", "videos/تعرف على مدينة القدس كأنك فيها.mp4", true));
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicData("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", "videos/تعرف على مدينة القدس كأنك فيها.mp4", true));
         adapter = new TopicsAdapter(this, data);
         binding.rvClimateTopics.setLayoutManager(new LinearLayoutManager(this));
         binding.rvClimateTopics.setHasFixedSize(true);
         binding.rvClimateTopics.setAdapter(adapter);
     }
+
+
+    @Override
+    public void getClimateTopics(List<TopicData> topicData) {
+        binding.progressBar.setVisibility(View.GONE);
+        data.addAll(topicData);
+        adapter.notifyDataSetChanged();
+    }
+
 }
