@@ -13,7 +13,7 @@
         android:fontFamily="@font/almarai_extra_bold"
         android:gravity="center"
         android:text="دليل بيت المقدس"
-        android:textColor="#FFF"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 

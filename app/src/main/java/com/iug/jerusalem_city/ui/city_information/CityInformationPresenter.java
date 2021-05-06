@@ -11,11 +11,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iug.jerusalem_city.models.InformationData;
+import com.iug.jerusalem_city.models.InformationModel;
 import com.iug.jerusalem_city.utils.Constants;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CityInformationPresenter {
 
@@ -41,8 +38,8 @@ public class CityInformationPresenter {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                InformationData informationData = document.toObject(InformationData.class);
-                                mListener.getCityInfo(informationData);
+                                InformationModel informationModel = document.toObject(InformationModel.class);
+                                mListener.getCityInfo(informationModel);
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -52,7 +49,7 @@ public class CityInformationPresenter {
     }
 
     public interface CityInformationListener {
-        void getCityInfo(InformationData data);
+        void getCityInfo(InformationModel data);
     }
 
 }

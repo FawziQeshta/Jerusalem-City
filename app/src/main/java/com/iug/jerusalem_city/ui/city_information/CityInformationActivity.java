@@ -2,15 +2,15 @@ package com.iug.jerusalem_city.ui.city_information;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.databinding.ActivityCityInformationBinding;
-import com.iug.jerusalem_city.models.InformationData;
+import com.iug.jerusalem_city.models.InformationModel;
+import com.iug.jerusalem_city.utils.Constants;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -23,6 +23,9 @@ public class CityInformationActivity extends AppCompatActivity implements CityIn
     private ActivityCityInformationBinding binding;
 
     private static final String TAG = "CityInformationActivity";
+
+    private SharedPreferences spSettings;
+    private int textSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,9 @@ public class CityInformationActivity extends AppCompatActivity implements CityIn
 
     @Override
     protected void onStart() {
+        spSettings = getSharedPreferences(Constants.SETTINGS_FILE_SHARED_NAME, MODE_PRIVATE);
+        textSize = spSettings.getInt(Constants.TEXT_SIZE_KEY, 18);
+        binding.infoTitleText.setTextSize(textSize);
         NavigationDrawerSetting.setUpNavigationDrawer(TAG, this, binding.infoDrawerLayout, binding.infoNavigationView, binding.infoToolbar, binding.infoMenu);
         super.onStart();
     }
@@ -64,7 +70,7 @@ public class CityInformationActivity extends AppCompatActivity implements CityIn
     }
 
     @Override
-    public void getCityInfo(InformationData data) {
+    public void getCityInfo(InformationModel data) {
         binding.progressBar.setVisibility(View.GONE);
         binding.containerInfo.setVisibility(View.VISIBLE);
         setUpSliderView(binding.sliderDetails, data.getImages());

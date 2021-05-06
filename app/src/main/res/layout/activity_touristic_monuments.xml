@@ -56,7 +56,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="أهم المعالم السياحية"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorTitleToolbar"
                     android:textSize="22sp" />
 
                 <LinearLayout
@@ -101,13 +101,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFFFF"
+        android:background="@color/colorBackgroundMenu"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/custom_header"
         app:itemHorizontalPadding="19dp"
         app:itemIconPadding="21dp"
         app:itemIconSize="20dp"
-        app:itemIconTint="#000"
+        app:itemIconTint="@color/colorIconsMenu"
         app:itemTextAppearance="@style/TextViewStyle"
         app:menu="@menu/menu_drawer" />
 

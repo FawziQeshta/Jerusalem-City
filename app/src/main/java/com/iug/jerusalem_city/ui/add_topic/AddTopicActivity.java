@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityAddTopicBinding;
 import com.iug.jerusalem_city.utils.Constants;
+import com.iug.jerusalem_city.utils.Utilities;
 
 public class AddTopicActivity extends AppCompatActivity {
 
@@ -51,7 +52,11 @@ public class AddTopicActivity extends AppCompatActivity {
         binding.btnAddTopic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkInputs();
+                if (Utilities.checkInternetConnected(AddTopicActivity.this)) {
+                    checkInputs();
+                } else {
+                    Toast.makeText(AddTopicActivity.this, "الرجاء فحص الإتصال بالإنترنت", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

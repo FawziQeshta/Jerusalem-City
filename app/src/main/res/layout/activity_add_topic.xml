@@ -29,7 +29,7 @@
                 android:fontFamily="@font/almarai_light"
                 android:gravity="center"
                 android:text="إضافة موضوع"
-                android:textColor="@color/white"
+                android:textColor="@color/colorTitleToolbar"
                 android:textSize="22sp" />
 
         </androidx.appcompat.widget.Toolbar>

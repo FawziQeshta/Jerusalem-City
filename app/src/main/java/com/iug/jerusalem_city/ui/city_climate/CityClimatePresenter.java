@@ -11,8 +11,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iug.jerusalem_city.models.TopicData;
-import com.iug.jerusalem_city.ui.city_history.CityHistoryPresenter;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.util.ArrayList;
@@ -42,11 +41,11 @@ public class CityClimatePresenter {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<TopicData> data = new ArrayList<>();
+                            List<TopicModel> data = new ArrayList<>();
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                TopicData topicData = document.toObject(TopicData.class);
-                                data.add(topicData);
+                                TopicModel topicModel = document.toObject(TopicModel.class);
+                                data.add(topicModel);
                             }
 
                             mListener.getClimateTopics(data);
@@ -59,7 +58,7 @@ public class CityClimatePresenter {
     }
 
     public interface CityClimateListener {
-        void getClimateTopics(List<TopicData> topicData);
+        void getClimateTopics(List<TopicModel> topicData);
     }
 
 }

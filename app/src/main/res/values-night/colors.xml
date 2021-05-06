@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#616161</color>
+    <color name="teal_700">#000000</color>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#FF000000</color>
+
+    <color name="colorStatusBar">#616161</color>
+    <color name="colorToolBar">#000000</color>
+    <color name="colorSilverLite">#211F20</color>
+    <color name="colorBlackLight">#EFEFEF</color>
+    <color name="colorMenuHeader">#00838F</color>
+    <color name="colorGray">#9E9E9E</color>
+    <color name="colorBackgroundMenu">#211F20</color>
+    <color name="colorBackgroundTextAddTopic">#212121</color>
+    <color name="colorIconsMenu">#9E9E9E</color>
+    <color name="colorTitleMain">#E0E0E0</color>
+    <color name="colorTitleToolbar">#E0E0E0</color>
+
+    <color name="colorBlackSections">#EFEFEF</color>
+    <color name="colorBgVideo">#211F20</color>
+
+</resources>

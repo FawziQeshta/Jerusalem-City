@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.iug.jerusalem_city.databinding.ActivityCityClimateBinding;
-import com.iug.jerusalem_city.models.TopicData;
-import com.iug.jerusalem_city.ui.city_history.CityHistoryPresenter;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
@@ -19,7 +18,7 @@ public class CityClimateActivity extends AppCompatActivity implements CityClimat
 
     private ActivityCityClimateBinding binding;
 
-    private List<TopicData> data;
+    private List<TopicModel> data;
     private TopicsAdapter adapter;
 
     private static final String TAG = "CityClimateActivity";
@@ -60,7 +59,7 @@ public class CityClimateActivity extends AppCompatActivity implements CityClimat
 
 
     @Override
-    public void getClimateTopics(List<TopicData> topicData) {
+    public void getClimateTopics(List<TopicModel> topicData) {
         binding.progressBar.setVisibility(View.GONE);
         data.addAll(topicData);
         adapter.notifyDataSetChanged();

@@ -1,6 +1,6 @@
 package com.iug.jerusalem_city.models;
 
-public class Section {
+public class SectionModel {
 
     private int id;
 
@@ -8,10 +8,10 @@ public class Section {
 
     private String name;
 
-    public Section() {
+    public SectionModel() {
     }
 
-    public Section(int id, int image, String name) {
+    public SectionModel(int id, int image, String name) {
         this.id = id;
         this.image = image;
         this.name = name;

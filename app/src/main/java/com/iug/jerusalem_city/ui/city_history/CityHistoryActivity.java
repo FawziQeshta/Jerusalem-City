@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.iug.jerusalem_city.databinding.ActivityHistoryCityBinding;
-import com.iug.jerusalem_city.models.TopicData;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
 public class CityHistoryActivity extends AppCompatActivity implements CityHistoryPresenter.CityHistoryListener {
 
     private ActivityHistoryCityBinding binding;
-    private List<TopicData> data;
+    private List<TopicModel> data;
     private TopicsAdapter adapter;
 
     private static final String TAG = "CityHistoryActivity";
@@ -56,7 +56,7 @@ public class CityHistoryActivity extends AppCompatActivity implements CityHistor
     }
 
     @Override
-    public void getHistoryTopics(List<TopicData> topicData) {
+    public void getHistoryTopics(List<TopicModel> topicData) {
         binding.progressBar.setVisibility(View.GONE);
         data.addAll(topicData);
         adapter.notifyDataSetChanged();

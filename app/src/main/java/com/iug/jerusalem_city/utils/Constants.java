@@ -9,4 +9,9 @@ public class Constants {
     public static final String KEY_HISTORY_COLLECTION = "CityHistory";
     public static final String KEY_TOURISTICAL_COLLECTION = "TouristicalMonuments";
 
+    public static final String SETTINGS_FILE_SHARED_NAME = "Settings";
+    public static final String DARK_MODE_KEY = "DarkMode";
+    public static final String PROGRESS_TEXT_SIZE_KEY = "progress";
+    public static final String TEXT_SIZE_KEY = "text_size";
+
 }

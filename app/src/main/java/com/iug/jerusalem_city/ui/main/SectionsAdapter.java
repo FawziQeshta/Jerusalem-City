@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iug.jerusalem_city.databinding.ItemSectionsBinding;
-import com.iug.jerusalem_city.models.Section;
+import com.iug.jerusalem_city.models.SectionModel;
 import com.iug.jerusalem_city.ui.add_topic.AddTopicActivity;
 import com.iug.jerusalem_city.ui.city_climate.CityClimateActivity;
 import com.iug.jerusalem_city.ui.city_history.CityHistoryActivity;
@@ -24,9 +24,9 @@ import java.util.List;
 public class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.SectionsHolder> {
 
     private Context context;
-    private List<Section> data;
+    private List<SectionModel> data;
 
-    public SectionsAdapter(Context context, List<Section> data) {
+    public SectionsAdapter(Context context, List<SectionModel> data) {
         this.context = context;
         this.data = data;
     }
@@ -39,16 +39,16 @@ public class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.Sectio
 
     @Override
     public void onBindViewHolder(@NonNull SectionsHolder holder, int position) {
-        Section section = data.get(position);
+        SectionModel sectionModel = data.get(position);
 
-        holder.binding.sectionImage.setImageResource(section.getImage());
+        holder.binding.sectionImage.setImageResource(sectionModel.getImage());
 
-        holder.binding.sectionName.setText(section.getName());
+        holder.binding.sectionName.setText(sectionModel.getName());
 
         holder.binding.sectionContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sectionContainerClicked(section.getId());
+                sectionContainerClicked(sectionModel.getId());
             }
         });
 

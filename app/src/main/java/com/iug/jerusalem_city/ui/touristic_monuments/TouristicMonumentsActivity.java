@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.iug.jerusalem_city.databinding.ActivityTouristicMonumentsBinding;
-import com.iug.jerusalem_city.models.TopicData;
-import com.iug.jerusalem_city.ui.city_climate.CityClimatePresenter;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
@@ -19,7 +18,7 @@ public class TouristicMonumentsActivity extends AppCompatActivity implements Tou
 
     private ActivityTouristicMonumentsBinding binding;
 
-    private List<TopicData> data;
+    private List<TopicModel> data;
     private TopicsAdapter adapter;
 
     private static final String TAG = "TouristicMonumentsActivity";
@@ -59,7 +58,7 @@ public class TouristicMonumentsActivity extends AppCompatActivity implements Tou
     }
 
     @Override
-    public void getTouristicMonumentsTopics(List<TopicData> topicData) {
+    public void getTouristicMonumentsTopics(List<TopicModel> topicData) {
         binding.progressBar.setVisibility(View.GONE);
         data.addAll(topicData);
         adapter.notifyDataSetChanged();

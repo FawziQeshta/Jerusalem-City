@@ -24,16 +24,57 @@
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="@font/almarai_light"
-                android:gravity="center"
-                android:text="الموضوع"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layoutDirection="rtl"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/settings"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="15dp"
+                        android:padding="0dp"
+                        app:srcCompat="@drawable/ic_settings_light" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/almarai_light"
+                    android:gravity="center"
+                    android:text="الموضوع"
+                    android:textColor="@color/colorTitleToolbar"
+                    android:textSize="22sp" />
+
+                <LinearLayout
+                    android:id="@+id/back"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="12dp"
+                        android:padding="0dp"
+                        app:srcCompat="@drawable/ic_back" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

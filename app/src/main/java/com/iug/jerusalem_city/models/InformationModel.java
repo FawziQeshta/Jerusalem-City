@@ -2,16 +2,16 @@ package com.iug.jerusalem_city.models;
 
 import java.util.List;
 
-public class InformationData {
+public class InformationModel {
 
     private String text;
 
     private List<String> images;
 
-    public InformationData() {
+    public InformationModel() {
     }
 
-    public InformationData(String text, List<String> images) {
+    public InformationModel(String text, List<String> images) {
         this.text = text;
         this.images = images;
     }

@@ -22,7 +22,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ItemTopicsBinding;
-import com.iug.jerusalem_city.models.TopicData;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;
 import com.iug.jerusalem_city.ui.topic_details.TopicDetailsActivity;
 
@@ -32,7 +32,7 @@ import java.util.List;
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolder> {
 
     private Context context;
-    private List<TopicData> data;
+    private List<TopicModel> data;
     private StorageReference storageRef;
 
     private static final String TAG = "TopicsAdapter";
@@ -40,7 +40,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
     private final int MAX_LINES = 3;
     private final String TWO_SPACES = " ";
 
-    public TopicsAdapter(Context context, List<TopicData> data) {
+    public TopicsAdapter(Context context, List<TopicModel> data) {
         this.context = context;
         this.data = data;
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -56,7 +56,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
 
     @Override
     public void onBindViewHolder(@NonNull TopicHolder holder, int position) {
-        TopicData topic = data.get(position);
+        TopicModel topic = data.get(position);
 
         holder.binding.tvTitle.setText(topic.getText());
 

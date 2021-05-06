@@ -48,14 +48,14 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
                     android:text="معلومات عن المدينة"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorTitleToolbar"
                     android:textSize="22sp" />
 
                 <LinearLayout
@@ -146,13 +146,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFFFF"
+        android:background="@color/colorBackgroundMenu"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/custom_header"
         app:itemHorizontalPadding="19dp"
         app:itemIconPadding="21dp"
         app:itemIconSize="20dp"
-        app:itemIconTint="#000"
+        app:itemIconTint="@color/colorIconsMenu"
         app:itemTextAppearance="@style/TextViewStyle"
         app:menu="@menu/menu_drawer" />
 
