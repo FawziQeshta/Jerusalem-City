@@ -45,7 +45,6 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
         this.data = data;
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
-        Collections.shuffle(data);
     }
 
     @NonNull
@@ -109,6 +108,12 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
             }
         });
 
+        if (position == 0) {
+            holder.binding.view.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.view.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -145,7 +150,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
 
                     SpannableString truncatedSpannableString = new SpannableString(actionDisplayText);
                     int startIndex = actionDisplayText.indexOf(moreString);
-                    truncatedSpannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.colorMenuHeader)), startIndex, startIndex + moreString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    truncatedSpannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.colorReadMore)), startIndex, startIndex + moreString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     holder.binding.tvTitle.setText(truncatedSpannableString);
                 }
             }

@@ -3,15 +3,18 @@ package com.iug.jerusalem_city.ui.settings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivitySettingsBinding;
+import com.iug.jerusalem_city.ui.main.MainActivity;
 
 import static com.iug.jerusalem_city.utils.Constants.DARK_MODE_KEY;
 import static com.iug.jerusalem_city.utils.Constants.PROGRESS_TEXT_SIZE_KEY;
@@ -33,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         init();
 
-        binding.settingsSeekBar.setProgress(sharedPreferences.getInt(PROGRESS_TEXT_SIZE_KEY, 1));
+        binding.settingsSeekBar.setProgress(sharedPreferences.getInt(PROGRESS_TEXT_SIZE_KEY, 0));
 
         binding.settingsSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
 
@@ -97,25 +100,27 @@ public class SettingsActivity extends AppCompatActivity {
                 public void run() {
                     if (isChecked && !sharedPreferences.getBoolean(DARK_MODE_KEY, false)) {
                         nightMode();
-                        editor.putBoolean(DARK_MODE_KEY, true);
                     } else {
                         lightMode();
-                        editor.putBoolean(DARK_MODE_KEY, false);
                     }
-                    editor.apply();
                 }
             }, 200);
         }
     };
 
     private void nightMode() {
+        editor.putBoolean(DARK_MODE_KEY, true);
+        editor.apply();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     }
 
     private void lightMode() {
+        editor.putBoolean(DARK_MODE_KEY, false);
+        editor.apply();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
+
 
 }

@@ -15,6 +15,7 @@ import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CityHistoryPresenter {
@@ -48,6 +49,7 @@ public class CityHistoryPresenter {
                                 data.add(topicModel);
                             }
 
+                            Collections.shuffle(data);
                             mListener.getHistoryTopics(data);
 
                         } else {

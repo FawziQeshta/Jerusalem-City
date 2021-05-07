@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.ui.city_climate;
+package com.iug.jerusalem_city.ui.last_news;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,31 +12,32 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.iug.jerusalem_city.models.TopicModel;
+import com.iug.jerusalem_city.ui.city_climate.CityClimatePresenter;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CityClimatePresenter {
+public class LastNewsPresenter {
 
     private Context context;
-    private CityClimateListener mListener;
+    private LastNewsListener mListener;
 
     private FirebaseFirestore db;
 
-    private static final String TAG = "CityClimatePresenter";
+    private static final String TAG = "LastNewsPresenter";
 
-    public CityClimatePresenter(Context context, CityClimateListener mListener) {
+    public LastNewsPresenter(Context context, LastNewsListener mListener) {
         this.context = context;
         this.mListener = mListener;
         db = FirebaseFirestore.getInstance();
     }
 
-    public void loadClimateTopics() {
+    public void loadLastNews() {
         DocumentReference bulletinRef = db.collection(Constants.KEY_MAIN_COLLECTION).document(Constants.KEY_MAIN_COLLECTION_ID);
 
-        bulletinRef.collection(Constants.KEY_CLIMATE_COLLECTION)
+        bulletinRef.collection(Constants.KEY_LAST_NEWS_COLLECTION)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -50,7 +51,7 @@ public class CityClimatePresenter {
                             }
 
                             Collections.shuffle(data);
-                            mListener.getClimateTopics(data);
+                            mListener.getLastNewsTopics(data);
 
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -59,8 +60,10 @@ public class CityClimatePresenter {
                 });
     }
 
-    public interface CityClimateListener {
-        void getClimateTopics(List<TopicModel> topicData);
+
+    public interface LastNewsListener {
+        void getLastNewsTopics(List<TopicModel> topicData);
     }
+
 
 }
