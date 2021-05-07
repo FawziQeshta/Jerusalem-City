@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JerusalemCity"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.add_topic.AddTopicActivity"></activity>
+        <activity android:name=".ui.add_topic.AddTopicActivity" />
         <activity android:name=".ui.last_news.LastNewsActivity" />
         <activity android:name=".ui.touristic_monuments.TouristicMonumentsActivity" />
         <activity android:name=".ui.city_climate.CityClimateActivity" />

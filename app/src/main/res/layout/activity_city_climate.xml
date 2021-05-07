@@ -55,7 +55,7 @@
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
                     android:text="مناخ المدينة"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorTitleToolbar"
                     android:textSize="22sp" />
 
                 <LinearLayout
@@ -86,6 +86,13 @@
             android:layout_below="@+id/climate_toolbar"
             android:scrollbars="none" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -93,13 +100,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#FFFFFF"
+        android:background="@color/colorBackgroundMenu"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/custom_header"
         app:itemHorizontalPadding="19dp"
         app:itemIconPadding="21dp"
         app:itemIconSize="20dp"
-        app:itemIconTint="#000"
+        app:itemIconTint="@color/colorIconsMenu"
         app:itemTextAppearance="@style/TextViewStyle"
         app:menu="@menu/menu_drawer" />
 

@@ -14,6 +14,12 @@
     <color name="colorBlackLight">#101010</color>
     <color name="colorMenuHeader">#00838F</color>
     <color name="colorGray">#9E9E9E</color>
+    <color name="colorBackgroundMenu">#FFFFFF</color>
+    <color name="colorBackgroundTextAddTopic">#FFFFFF</color>
+    <color name="colorTitleMain">#FFFFFF</color>
+    <color name="colorTitleToolbar">#FFFFFF</color>
+
+    <color name="colorIconsMenu">#000000</color>
 
     <color name="colorBlackSections">#211F20</color>
     <color name="colorBgVideo">#211F20</color>

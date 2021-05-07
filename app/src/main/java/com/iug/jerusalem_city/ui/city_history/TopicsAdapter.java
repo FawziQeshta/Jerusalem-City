@@ -22,16 +22,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ItemTopicsBinding;
-import com.iug.jerusalem_city.models.TopicData;
+import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;
 import com.iug.jerusalem_city.ui.topic_details.TopicDetailsActivity;
 
+import java.util.Collections;
 import java.util.List;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolder> {
 
     private Context context;
-    private List<TopicData> data;
+    private List<TopicModel> data;
     private StorageReference storageRef;
 
     private static final String TAG = "TopicsAdapter";
@@ -39,11 +40,12 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
     private final int MAX_LINES = 3;
     private final String TWO_SPACES = " ";
 
-    public TopicsAdapter(Context context, List<TopicData> data) {
+    public TopicsAdapter(Context context, List<TopicModel> data) {
         this.context = context;
         this.data = data;
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+        Collections.shuffle(data);
     }
 
     @NonNull
@@ -54,9 +56,9 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
 
     @Override
     public void onBindViewHolder(@NonNull TopicHolder holder, int position) {
-        TopicData topic = data.get(position);
+        TopicModel topic = data.get(position);
 
-        holder.binding.tvTitle.setText(topic.getTitle());
+        holder.binding.tvTitle.setText(topic.getText());
 
         StorageReference pathReference = storageRef.child(topic.getImageUrl());
 
@@ -66,7 +68,6 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
                 Glide.with(context.getApplicationContext())
                         .load(uri)
                         .centerCrop()
-                        .skipMemoryCache(true)
                         .into(holder.binding.ivBackground);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -77,7 +78,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
             }
         });
 
-        addReadMore(holder, topic.getTitle());
+        addReadMore(holder, topic.getText());
 
         if (topic.isHasVideo()) {
             holder.binding.ivPlayVideo.setVisibility(View.VISIBLE);
@@ -102,7 +103,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
                 Intent intent = new Intent(context, TopicDetailsActivity.class);
                 intent.putExtra("image", topic.getImageUrl());
                 intent.putExtra("isVideo", topic.isHasVideo());
-                intent.putExtra("text", topic.getTitle());
+                intent.putExtra("text", topic.getText());
                 intent.putExtra("videoUrl", topic.getVideoUrl());
                 context.startActivity(intent);
             }

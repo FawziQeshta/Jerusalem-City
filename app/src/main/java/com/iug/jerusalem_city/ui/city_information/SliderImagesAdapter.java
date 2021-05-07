@@ -24,13 +24,14 @@ import java.util.List;
 public class SliderImagesAdapter extends SliderViewAdapter<SliderImagesAdapter.SliderAdapterVH> {
 
     private Context context;
-    private List<String> mSliderItems = new ArrayList<>();
+    private List<String> mSliderItems;
     private StorageReference storageRef;
 
     private static final String TAG = "SliderImagesAdapter";
 
-    public SliderImagesAdapter(Context context) {
+    public SliderImagesAdapter(Context context, List<String> mSliderItems) {
         this.context = context;
+        this.mSliderItems = mSliderItems;
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
     }

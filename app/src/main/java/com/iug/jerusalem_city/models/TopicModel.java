@@ -1,10 +1,10 @@
 package com.iug.jerusalem_city.models;
 
-public class TopicData {
+public class TopicModel {
 
     private String id;
 
-    private String title;
+    private String text;
 
     private String imageUrl;
 
@@ -12,12 +12,12 @@ public class TopicData {
 
     private boolean hasVideo;
 
-    public TopicData() {
+    public TopicModel() {
     }
 
-    public TopicData(String id, String title, String imageUrl, String videoUrl, boolean hasVideo) {
+    public TopicModel(String id, String text, String imageUrl, String videoUrl, boolean hasVideo) {
         this.id = id;
-        this.title = title;
+        this.text = text;
         this.imageUrl = imageUrl;
         this.videoUrl = videoUrl;
         this.hasVideo = hasVideo;
@@ -31,12 +31,12 @@ public class TopicData {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getImageUrl() {
