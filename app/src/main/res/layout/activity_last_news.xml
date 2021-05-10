@@ -54,7 +54,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
-                    android:text="اّخر الأخبار"
+                    android:text="اخر الأخبار"
                     android:textColor="@color/colorTitleToolbar"
                     android:textSize="22sp" />
 

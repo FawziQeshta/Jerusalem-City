@@ -1,24 +1,25 @@
 package com.iug.jerusalem_city.utils;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.view.Gravity;
-import android.view.View;
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import com.google.android.material.navigation.NavigationView;
-import com.iug.jerusalem_city.R;
+import android.net.Uri;
 
 public class Utilities {
 
     public static boolean checkInternetConnected(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    public static void openUrl(Context context, String url) {
+        if (!url.startsWith("http://") && !url.startsWith("https://"))
+            url = "http://" + url;
+        Intent intent = new Intent();
+        Uri uri = Uri.parse(url);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(uri);
+        context.startActivity(intent);
     }
 
 }

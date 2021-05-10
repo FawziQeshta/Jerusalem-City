@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.iug.jerusalem_city.databinding.ActivityLastNewsBinding;
-import com.iug.jerusalem_city.models.TopicModel;
-import com.iug.jerusalem_city.ui.city_climate.CityClimatePresenter;
-import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
+import com.iug.jerusalem_city.models.Article;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;
@@ -19,8 +17,8 @@ public class LastNewsActivity extends AppCompatActivity implements LastNewsPrese
 
     private ActivityLastNewsBinding binding;
 
-    private List<TopicModel> data;
-    private TopicsAdapter adapter;
+    private List<Article> data;
+    private LastNewsAdapter adapter;
 
     private static final String TAG = "LastNewsActivity";
 
@@ -52,14 +50,14 @@ public class LastNewsActivity extends AppCompatActivity implements LastNewsPrese
 
     private void initRecyclerView() {
         data = new ArrayList<>();
-        adapter = new TopicsAdapter(this, data);
+        adapter = new LastNewsAdapter(this, data);
         binding.rvNewsTopics.setLayoutManager(new LinearLayoutManager(this));
         binding.rvNewsTopics.setHasFixedSize(true);
         binding.rvNewsTopics.setAdapter(adapter);
     }
 
     @Override
-    public void getLastNewsTopics(List<TopicModel> topicData) {
+    public void getLastNewsTopics(List<Article> topicData) {
         binding.progressBar.setVisibility(View.GONE);
         data.addAll(topicData);
         adapter.notifyDataSetChanged();

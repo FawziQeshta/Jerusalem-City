@@ -5,8 +5,8 @@
     android:id="@+id/info_drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSilverLite"
     android:animateLayoutChanges="false"
+    android:background="@color/colorSilverLite"
     android:fitsSystemWindows="true"
     android:layoutDirection="rtl"
     tools:context=".ui.city_information.CityInformationActivity">
@@ -51,10 +51,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
                     android:fontFamily="@font/almarai_light"
                     android:gravity="center"
                     android:text="معلومات عن المدينة"
-                    android:layout_weight="1"
                     android:textColor="@color/colorTitleToolbar"
                     android:textSize="22sp" />
 
@@ -72,7 +72,7 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="12dp"
                         android:padding="0dp"
-                        app:srcCompat="@drawable/ic_back"/>
+                        app:srcCompat="@drawable/ic_back" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -82,19 +82,19 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
         <ScrollView
             android:id="@+id/container_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/info_toolbar"
-            android:visibility="gone"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:scrollbars="none">
+            android:scrollbars="none"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                     <com.smarteist.autoimageslider.SliderView
                         android:id="@+id/sliderDetails"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
+                        android:layout_height="220dp"
                         app:sliderAnimationDuration="600"
                         app:sliderAutoCycleDirection="back_and_forth"
                         app:sliderIndicatorAnimationDuration="600"
@@ -126,14 +126,45 @@
                     android:id="@+id/info_title_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/almarai_regular"
-                    android:gravity="right"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/almarai_regular"
+                    android:gravity="right"
                     android:lineSpacingExtra="6dp"
                     android:text="معلومات عن المدينة"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="6dp">
+
+                    <RelativeLayout
+                        android:id="@+id/container_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iv_background"
+                            android:layout_width="match_parent"
+                            android:layout_height="220dp"
+                            android:background="@color/colorGray"
+                            android:scaleType="centerCrop" />
+
+                        <ImageView
+                            android:id="@+id/ivPlayVideo"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/ic_play_video" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

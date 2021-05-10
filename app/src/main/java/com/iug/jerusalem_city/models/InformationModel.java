@@ -8,12 +8,11 @@ public class InformationModel {
 
     private List<String> images;
 
-    public InformationModel() {
-    }
+    private String videoUrl;
 
-    public InformationModel(String text, List<String> images) {
-        this.text = text;
-        this.images = images;
+    private String videoThumbnail;
+
+    public InformationModel() {
     }
 
     public String getText() {
@@ -30,5 +29,21 @@ public class InformationModel {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public String getVideoThumbnail() {
+        return videoThumbnail;
+    }
+
+    public void setVideoThumbnail(String videoThumbnail) {
+        this.videoThumbnail = videoThumbnail;
     }
 }
