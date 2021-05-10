@@ -7,19 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.iug.jerusalem_city.databinding.ActivityLastNewsBinding;
-import com.iug.jerusalem_city.models.TopicModel;
-import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
+import com.iug.jerusalem_city.models.Article;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LastNewsActivity extends AppCompatActivity {
+public class LastNewsActivity extends AppCompatActivity implements LastNewsPresenter.LastNewsListener {
 
     private ActivityLastNewsBinding binding;
 
-    private List<TopicModel> data;
-    private TopicsAdapter adapter;
+    private List<Article> data;
+    private LastNewsAdapter adapter;
 
     private static final String TAG = "LastNewsActivity";
 
@@ -29,7 +28,10 @@ public class LastNewsActivity extends AppCompatActivity {
         binding = ActivityLastNewsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        loadData();
+        initRecyclerView();
+
+        LastNewsPresenter presenter = new LastNewsPresenter(this, this);
+        presenter.loadLastNews();
 
         binding.back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +48,19 @@ public class LastNewsActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    private void loadData() {
+    private void initRecyclerView() {
         data = new ArrayList<>();
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", "videos/تعرف على مدينة القدس كأنك فيها.mp4", true));
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", null, false));
-        data.add(new TopicModel("1", "بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدس v بيت المقدس بيت المقدس بيت المقدس بيت المقدس بيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدسبيت المقدس", "images/2018-1091x520-c.jpg", "videos/تعرف على مدينة القدس كأنك فيها.mp4", true));
-        adapter = new TopicsAdapter(this, data);
+        adapter = new LastNewsAdapter(this, data);
         binding.rvNewsTopics.setLayoutManager(new LinearLayoutManager(this));
         binding.rvNewsTopics.setHasFixedSize(true);
         binding.rvNewsTopics.setAdapter(adapter);
+    }
+
+    @Override
+    public void getLastNewsTopics(List<Article> topicData) {
+        binding.progressBar.setVisibility(View.GONE);
+        data.addAll(topicData);
+        adapter.notifyDataSetChanged();
     }
 
 }

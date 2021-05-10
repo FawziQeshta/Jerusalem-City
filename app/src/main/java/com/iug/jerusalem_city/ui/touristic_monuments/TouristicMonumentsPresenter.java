@@ -15,6 +15,7 @@ import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TouristicMonumentsPresenter {
@@ -48,6 +49,7 @@ public class TouristicMonumentsPresenter {
                                 data.add(topicModel);
                             }
 
+                            Collections.shuffle(data);
                             mListener.getTouristicMonumentsTopics(data);
 
                         } else {

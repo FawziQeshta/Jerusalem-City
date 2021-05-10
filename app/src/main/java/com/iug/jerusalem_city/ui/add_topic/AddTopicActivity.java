@@ -42,7 +42,7 @@ public class AddTopicActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent.createChooser(intent, "Select image"), IMAGE_REC_CODE);
+                    startActivityForResult(Intent.createChooser(intent, "Select image"), IMAGE_REC_CODE);
                 }
             }
         });

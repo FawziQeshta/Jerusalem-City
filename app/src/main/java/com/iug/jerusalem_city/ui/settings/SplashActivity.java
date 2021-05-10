@@ -23,8 +23,6 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        checkDarkMode();
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -33,15 +31,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         },1500);
 
-    }
-
-    private void checkDarkMode() {
-        SharedPreferences spToken = getSharedPreferences(Constants.SETTINGS_FILE_SHARED_NAME, MODE_PRIVATE);
-        if (spToken.getBoolean(Constants.DARK_MODE_KEY, false)) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
     }
 
 }

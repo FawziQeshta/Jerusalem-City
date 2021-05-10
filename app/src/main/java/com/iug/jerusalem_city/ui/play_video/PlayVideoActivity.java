@@ -123,7 +123,6 @@ public class PlayVideoActivity extends AppCompatActivity {
             pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-//                Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/jerusalem-city-5c6b1.appspot.com/o/videos%2F%D8%AA%D8%B9%D8%B1%D9%81%20%D8%B9%D9%84%D9%89%20%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%82%D8%AF%D8%B3%20%D9%83%D8%A3%D9%86%D9%83%20%D9%81%D9%8A%D9%87%D8%A7.mp4?alt=media&token=13aa2717-cbef-44ce-b093-9112c2ef9fe5");
                     playVideo(uri);
                 }
             }).addOnFailureListener(new OnFailureListener() {

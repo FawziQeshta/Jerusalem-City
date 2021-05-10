@@ -27,44 +27,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/container_image"
+            <ImageView
+                android:id="@+id/iv_background"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/iv_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@color/colorGray"
-                    android:scaleType="centerCrop" />
-
-                <ImageView
-                    android:id="@+id/ivPlayVideo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerInParent="true"
-                    android:scaleType="centerCrop"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_play_video" />
-
-            </RelativeLayout>
+                android:layout_height="180dp"
+                android:background="@color/colorGray"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:fontFamily="@font/almarai_bold"
+                android:gravity="start"
+                android:lineSpacingExtra="6dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="مقدمة عن المدينة"
+                android:textColor="@color/colorBlackSections"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/almarai_regular"
                 android:gravity="start"
                 android:lineSpacingExtra="6dp"
-                android:maxLines="3"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:paddingBottom="6dp"
                 android:text="مقدمة عن المدينة"
                 android:textColor="@color/colorBlackSections"
                 android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_read_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/shape_btn_reload"
+                android:fontFamily="@font/almarai_bold"
+                android:text="إقرأ المزيد"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
