@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityCityInformationBinding;
 import com.iug.jerusalem_city.models.InformationModel;
 import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;

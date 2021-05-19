@@ -19,9 +19,13 @@ import com.iug.jerusalem_city.models.TopicModel;
 import com.iug.jerusalem_city.ui.city_climate.CityClimatePresenter;
 import com.iug.jerusalem_city.utils.Constants;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,18 +36,20 @@ public class LastNewsPresenter {
     private Context context;
     private LastNewsListener mListener;
 
-//    private FirebaseFirestore db;
+//    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private static final String TAG = "LastNewsPresenter";
 
     public LastNewsPresenter(Context context, LastNewsListener mListener) {
         this.context = context;
         this.mListener = mListener;
-//        db = FirebaseFirestore.getInstance();
     }
 
     public void loadLastNews() {
-        Call<LastNewsModel> call = ApiClient.getInstance().getLastNews("القدس", "2021-05-08", "2021-05-08", "popularity", Constants.API_KEY);
+        String currentDate = getCurrentDate();
+        String yesterday = getYesterdayDate();
+
+        Call<LastNewsModel> call = ApiClient.getInstance().getLastNews("القدس", yesterday, currentDate, "popularity", Constants.API_KEY);
 
         call.enqueue(new Callback<LastNewsModel>() {
             @Override
@@ -70,6 +76,21 @@ public class LastNewsPresenter {
                 }
             }
         });
+
+    }
+
+    private String getCurrentDate() {
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return df.format(c);
+    }
+
+    private String getYesterdayDate() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        Date c = cal.getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return df.format(c);
     }
 
     /*public void loadLastFirebase() {

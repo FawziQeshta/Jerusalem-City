@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityLastNewsBinding;
 import com.iug.jerusalem_city.models.Article;
+import com.iug.jerusalem_city.utils.Constants;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;

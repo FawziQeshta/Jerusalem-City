@@ -1,5 +1,6 @@
 package com.iug.jerusalem_city.ui.settings;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -12,14 +13,21 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivitySettingsBinding;
 import com.iug.jerusalem_city.ui.main.MainActivity;
+import com.iug.jerusalem_city.utils.Constants;
 
 import static com.iug.jerusalem_city.utils.Constants.DARK_MODE_KEY;
+import static com.iug.jerusalem_city.utils.Constants.NOTIFICATIONS_KEY;
 import static com.iug.jerusalem_city.utils.Constants.PROGRESS_TEXT_SIZE_KEY;
 import static com.iug.jerusalem_city.utils.Constants.SETTINGS_FILE_SHARED_NAME;
 import static com.iug.jerusalem_city.utils.Constants.TEXT_SIZE_KEY;
+import static com.iug.jerusalem_city.utils.Utilities.subscriptionNotifications;
+import static com.iug.jerusalem_city.utils.Utilities.unSubscriptionNotifications;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -27,6 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
+    private static final String TAG = "SettingsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +50,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         binding.settingsSeekBar.setOnSeekBarChangeListener(mSeekBarListener);
 
-        binding.settingsSwitch.setOnCheckedChangeListener(mSwitchDarkModeListener);
+        binding.darkModeSwitch.setOnCheckedChangeListener(mSwitchDarkModeListener);
+
+        binding.notificationsSwitch.setOnCheckedChangeListener(mSwitchNotificationsListener);
 
         binding.settingToolbar.setNavigationIcon(R.drawable.ic_back);
         binding.settingToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -57,8 +69,13 @@ public class SettingsActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
 
         if (sharedPreferences.getBoolean(DARK_MODE_KEY, false)) {
-            binding.settingsSwitch.setChecked(true);
+            binding.darkModeSwitch.setChecked(true);
         }
+
+        if (sharedPreferences.getBoolean(NOTIFICATIONS_KEY, true)) {
+            binding.notificationsSwitch.setChecked(true);
+        }
+
     }
 
     private final SeekBar.OnSeekBarChangeListener mSeekBarListener = new SeekBar.OnSeekBarChangeListener() {
@@ -108,6 +125,24 @@ public class SettingsActivity extends AppCompatActivity {
         }
     };
 
+    private final CompoundButton.OnCheckedChangeListener mSwitchNotificationsListener = new CompoundButton.OnCheckedChangeListener() {
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isChecked && !sharedPreferences.getBoolean(NOTIFICATIONS_KEY, true)) {
+                        editor.putBoolean(NOTIFICATIONS_KEY, true);
+                        subscriptionNotifications();
+                    } else {
+                        editor.putBoolean(NOTIFICATIONS_KEY, false);
+                        unSubscriptionNotifications();
+                    }
+                    editor.apply();
+                }
+            }, 200);
+        }
+    };
+
     private void nightMode() {
         editor.putBoolean(DARK_MODE_KEY, true);
         editor.apply();
@@ -121,6 +156,5 @@ public class SettingsActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
-
 
 }
