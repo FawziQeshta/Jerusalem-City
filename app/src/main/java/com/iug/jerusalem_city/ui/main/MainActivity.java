@@ -1,18 +1,29 @@
 package com.iug.jerusalem_city.ui.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityMainBinding;
 import com.iug.jerusalem_city.models.SectionModel;
+import com.iug.jerusalem_city.utils.Constants;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 import com.iug.jerusalem_city.utils.SpacesItemDecoration;
+import com.iug.jerusalem_city.utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.iug.jerusalem_city.utils.Constants.NOTIFICATIONS_KEY;
+import static com.iug.jerusalem_city.utils.Constants.SETTINGS_FILE_SHARED_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private SectionsAdapter adapter;
 
     private List<SectionModel> data;
+
+    private SharedPreferences sharedPreferences;
 
     private static final String TAG = "MainActivity";
 
@@ -31,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         getSections();
 
+        checkSubscriptionNotifications();
+
     }
 
     @Override
@@ -40,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getSections() {
+        sharedPreferences = getSharedPreferences(SETTINGS_FILE_SHARED_NAME, MODE_PRIVATE);
+
         data = new ArrayList<>();
         data.add(new SectionModel(1, R.drawable.ic_info, "معلومات عن المدينة"));
         data.add(new SectionModel(2, R.drawable.ic_history, "تاريخ المدينة"));
@@ -55,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
         binding.contentMain.rvSections.addItemDecoration(new SpacesItemDecoration(10));
         binding.contentMain.rvSections.setAdapter(adapter);
 
+    }
+
+    private void checkSubscriptionNotifications() {
+        if (sharedPreferences.getBoolean(NOTIFICATIONS_KEY, true)) {
+            Utilities.subscriptionNotifications();
+        } else {
+            Utilities.unSubscriptionNotifications();
+        }
     }
 
 }

@@ -12,10 +12,15 @@ public class Constants {
 
     public static final String SETTINGS_FILE_SHARED_NAME = "Settings";
     public static final String DARK_MODE_KEY = "DarkMode";
+    public static final String NOTIFICATIONS_KEY = "Notifications";
     public static final String PROGRESS_TEXT_SIZE_KEY = "progress";
     public static final String TEXT_SIZE_KEY = "text_size";
 
     public static final String API_KEY = "30d747ee29ec4c958b9dc982877ad057";
+
+    public static final int SKELETON_DURATION = 800;
+
+    public static final String NOTIFICATIONS_TOPIC = "JerusalemFCM";
 
 
 }

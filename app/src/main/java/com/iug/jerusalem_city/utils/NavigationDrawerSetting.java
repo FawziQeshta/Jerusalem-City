@@ -2,8 +2,11 @@ package com.iug.jerusalem_city.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,10 +28,14 @@ import com.iug.jerusalem_city.ui.main.MainActivity;
 import com.iug.jerusalem_city.ui.settings.SettingsActivity;
 import com.iug.jerusalem_city.ui.touristic_monuments.TouristicMonumentsActivity;
 
+import static com.iug.jerusalem_city.utils.Constants.NOTIFICATIONS_KEY;
+import static com.iug.jerusalem_city.utils.Constants.SETTINGS_FILE_SHARED_NAME;
+
 public class NavigationDrawerSetting {
 
     private static DrawerLayout mDrawerLayout;
-    private static Intent intent;;
+    private static Intent intent;
+    ;
 
     public static NavigationView setUpNavigationDrawer(final String hostScreen, Activity activity,
                                                        DrawerLayout drawerLayout, NavigationView navigationView,

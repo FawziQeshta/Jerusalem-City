@@ -26,4 +26,6 @@
     <color name="colorBlackSections">#EFEFEF</color>
     <color name="colorBgVideo">#211F20</color>
 
+    <color name="colorSkeleton">#757575</color>
+
 </resources>
