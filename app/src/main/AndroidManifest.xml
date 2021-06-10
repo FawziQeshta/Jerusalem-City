@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".api.MyApplication"
+        android:name=".data.api.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,17 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JerusalemCity"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.favorite.FavoriteActivity"/>
         <activity android:name=".ui.add_topic.AddTopicActivity" />
         <activity android:name=".ui.last_news.LastNewsActivity" />
         <activity android:name=".ui.touristic_monuments.TouristicMonumentsActivity" />
         <activity android:name=".ui.city_climate.CityClimateActivity" />
         <activity android:name=".ui.topic_details.TopicDetailsActivity" />
         <activity android:name=".ui.city_history.CityHistoryActivity" />
-        <activity android:name=".ui.play_video.PlayVideoActivity"
+        <activity
+            android:name=".ui.play_video.PlayVideoActivity"
             android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".ui.city_information.CityInformationActivity" />
         <activity android:name=".ui.settings.SettingsActivity" />
-        <activity android:name=".ui.main.MainActivity"
+        <activity
+            android:name=".ui.main.MainActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,7 +52,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="notification_channel_id" />
-
     </application>
 
 </manifest>

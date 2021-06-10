@@ -6,23 +6,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.iug.jerusalem_city.api.ApiClient;
-import com.iug.jerusalem_city.models.Article;
-import com.iug.jerusalem_city.models.LastNewsModel;
-import com.iug.jerusalem_city.models.TopicModel;
-import com.iug.jerusalem_city.ui.city_climate.CityClimatePresenter;
+import com.iug.jerusalem_city.data.api.ApiClient;
+import com.iug.jerusalem_city.data.models.Article;
+import com.iug.jerusalem_city.data.models.LastNewsModel;
+import com.iug.jerusalem_city.data.models.TopicModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -49,7 +40,7 @@ public class LastNewsPresenter {
         String currentDate = getCurrentDate();
         String yesterday = getYesterdayDate();
 
-        Call<LastNewsModel> call = ApiClient.getInstance().getLastNews("القدس", yesterday, currentDate, "popularity", Constants.API_KEY);
+        Call<LastNewsModel> call = ApiClient.getInstance().getLastNews("القدس", yesterday, currentDate, "popularity", "ar", Constants.API_KEY);
 
         call.enqueue(new Callback<LastNewsModel>() {
             @Override

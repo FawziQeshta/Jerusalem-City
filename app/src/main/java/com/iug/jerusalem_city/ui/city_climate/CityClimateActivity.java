@@ -6,11 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
-import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityCityClimateBinding;
-import com.iug.jerusalem_city.models.TopicModel;
+import com.iug.jerusalem_city.data.models.TopicModel;
 import com.iug.jerusalem_city.ui.city_history.TopicsAdapter;
-import com.iug.jerusalem_city.utils.Constants;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 
 import java.util.ArrayList;

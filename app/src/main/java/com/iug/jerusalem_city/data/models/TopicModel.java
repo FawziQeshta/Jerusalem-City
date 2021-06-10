@@ -1,27 +1,34 @@
-package com.iug.jerusalem_city.models;
+package com.iug.jerusalem_city.data.models;
 
-public class TopicModel {
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    private String id;
+import java.io.Serializable;
 
+@Entity(tableName = "TopicModel")
+public class TopicModel implements Serializable {
+
+    @PrimaryKey
+    @NonNull
+    private String id = "";
+
+    @ColumnInfo(name = "text")
     private String text;
 
+    @ColumnInfo(name = "imageUrl")
     private String imageUrl;
 
+    @ColumnInfo(name = "videoUrl")
     private String videoUrl;
 
+    @ColumnInfo(name = "hasVideo")
     private boolean hasVideo;
 
-    public TopicModel() {
-    }
+    private boolean isSaved;
 
-    public TopicModel(String id, String text, String imageUrl, String videoUrl, boolean hasVideo) {
-        this.id = id;
-        this.text = text;
-        this.imageUrl = imageUrl;
-        this.videoUrl = videoUrl;
-        this.hasVideo = hasVideo;
-    }
+
 
     public String getId() {
         return id;
@@ -61,5 +68,13 @@ public class TopicModel {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setSaved(boolean saved) {
+        isSaved = saved;
     }
 }

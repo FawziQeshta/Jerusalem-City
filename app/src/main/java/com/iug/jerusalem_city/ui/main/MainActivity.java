@@ -1,20 +1,14 @@
 package com.iug.jerusalem_city.ui.main;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ActivityMainBinding;
-import com.iug.jerusalem_city.models.SectionModel;
-import com.iug.jerusalem_city.utils.Constants;
+import com.iug.jerusalem_city.data.models.SectionModel;
 import com.iug.jerusalem_city.utils.NavigationDrawerSetting;
 import com.iug.jerusalem_city.utils.SpacesItemDecoration;
 import com.iug.jerusalem_city.utils.Utilities;
@@ -60,11 +54,12 @@ public class MainActivity extends AppCompatActivity {
         data = new ArrayList<>();
         data.add(new SectionModel(1, R.drawable.ic_info, "معلومات عن المدينة"));
         data.add(new SectionModel(2, R.drawable.ic_history, "تاريخ المدينة"));
-        data.add(new SectionModel(3, R.drawable.ic_climant, "مناخ المدينة"));
+        data.add(new SectionModel(3, R.drawable.ic_climate, "مناخ المدينة"));
         data.add(new SectionModel(4, R.drawable.ic_dome_of_the_rock, "أهم المعالم السياحية"));
         data.add(new SectionModel(5, R.drawable.ic_last_news, "اّخر الأخبار"));
         data.add(new SectionModel(6, R.drawable.ic_add_topic, "إضافة موضوع"));
-        data.add(new SectionModel(7, R.drawable.ic_settings, "الإعدادت"));
+        data.add(new SectionModel(7, R.drawable.ic_save_menu, "المفضله"));
+        data.add(new SectionModel(8, R.drawable.ic_settings, "الإعدادت"));
 
         adapter = new SectionsAdapter(this, data);
         binding.contentMain.rvSections.setLayoutManager(new GridLayoutManager(this, 2));

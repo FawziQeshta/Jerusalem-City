@@ -11,7 +11,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iug.jerusalem_city.models.InformationModel;
+import com.iug.jerusalem_city.data.models.InformationModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 public class CityInformationPresenter {

@@ -11,7 +11,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iug.jerusalem_city.models.TopicModel;
+import com.iug.jerusalem_city.data.models.TopicModel;
+import com.iug.jerusalem_city.data.room_database.RoomDB;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class TouristicMonumentsPresenter {
     private CityTouristicMonumentsListener mListener;
 
     private FirebaseFirestore db;
+    private RoomDB roomDB;
 
     private static final String TAG = "TouristicMonumentsPrese";
 
@@ -31,6 +33,7 @@ public class TouristicMonumentsPresenter {
         this.context = context;
         this.mListener = mListener;
         db = FirebaseFirestore.getInstance();
+        roomDB = RoomDB.getInstance(context);
     }
 
     public void loadTouristicMonumentsTopics() {
@@ -46,6 +49,8 @@ public class TouristicMonumentsPresenter {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 TopicModel topicModel = document.toObject(TopicModel.class);
+                                topicModel.setId(document.getId());
+                                topicModel.setSaved(roomDB.daoAccess().isExists(topicModel.getId()));
                                 data.add(topicModel);
                             }
 

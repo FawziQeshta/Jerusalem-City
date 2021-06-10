@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,12 +22,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.iug.jerusalem_city.R;
+import com.iug.jerusalem_city.data.room_database.RoomDB;
 import com.iug.jerusalem_city.databinding.ItemTopicsBinding;
-import com.iug.jerusalem_city.models.TopicModel;
+import com.iug.jerusalem_city.data.models.TopicModel;
 import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;
 import com.iug.jerusalem_city.ui.topic_details.TopicDetailsActivity;
 
-import java.util.Collections;
 import java.util.List;
 
 public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolder> {
@@ -34,6 +35,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
     private Context context;
     private List<TopicModel> data;
     private StorageReference storageRef;
+    private RoomDB db;
 
     private static final String TAG = "TopicsAdapter";
 
@@ -45,6 +47,7 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
         this.data = data;
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+        db = RoomDB.getInstance(context);
     }
 
     @NonNull
@@ -58,6 +61,10 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
         TopicModel topic = data.get(position);
 
         holder.binding.tvTitle.setText(topic.getText());
+
+        if (context.getClass().getSimpleName().equals("FavoriteActivity")) {
+            topic.setSaved(true);
+        }
 
         StorageReference pathReference = storageRef.child(topic.getImageUrl());
 
@@ -96,14 +103,33 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
             holder.binding.ivPlayVideo.setVisibility(View.GONE);
         }
 
+        if (topic.isSaved()) {
+            holder.binding.customTopicSave.setImageResource(R.drawable.ic_save_white_dark);
+        } else {
+            holder.binding.customTopicSave.setImageResource(R.drawable.ic_save_white);
+        }
+
+        holder.binding.customTopicSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveTopic(topic, holder.binding.customTopicSave, position);
+            }
+        });
+
+        holder.binding.ivBackground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TopicDetailsActivity.class);
+                intent.putExtra("topic", topic);
+                context.startActivity(intent);
+            }
+        });
+
         holder.binding.tvTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, TopicDetailsActivity.class);
-                intent.putExtra("image", topic.getImageUrl());
-                intent.putExtra("isVideo", topic.isHasVideo());
-                intent.putExtra("text", topic.getText());
-                intent.putExtra("videoUrl", topic.getVideoUrl());
+                intent.putExtra("topic", topic);
                 context.startActivity(intent);
             }
         });
@@ -114,6 +140,19 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
             holder.binding.view.setVisibility(View.GONE);
         }
 
+    }
+
+    private void saveTopic(TopicModel topic, ImageView imageSrc, int position) {
+        if (topic.isSaved()) {
+            db.daoAccess().deleteSpecificFavorites(topic.getId());
+            imageSrc.setImageResource(R.drawable.ic_save_white);
+            topic.setSaved(false);
+            removeItem(position);
+        } else {
+            db.daoAccess().insertFavorites(topic);
+            imageSrc.setImageResource(R.drawable.ic_save_white_dark);
+            topic.setSaved(true);
+        }
     }
 
     @Override
@@ -130,6 +169,14 @@ public class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.TopicHolde
 
             this.binding = binding;
 
+        }
+    }
+
+    private void removeItem(int position) {
+        if (context.getClass().getSimpleName().equals("FavoriteActivity")) {
+            data.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, getItemCount());
         }
     }
 

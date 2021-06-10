@@ -1,5 +1,5 @@
 
-package com.iug.jerusalem_city.models;
+package com.iug.jerusalem_city.data.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

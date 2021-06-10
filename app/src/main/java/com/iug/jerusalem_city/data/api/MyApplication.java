@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.api;
+package com.iug.jerusalem_city.data.api;
 
 import android.app.Application;
 import android.content.Context;
