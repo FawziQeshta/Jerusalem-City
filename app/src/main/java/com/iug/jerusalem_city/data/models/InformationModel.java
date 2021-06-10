@@ -1,4 +1,4 @@
-package com.iug.jerusalem_city.models;
+package com.iug.jerusalem_city.data.models;
 
 import java.util.List;
 

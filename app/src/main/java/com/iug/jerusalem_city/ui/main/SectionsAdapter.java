@@ -10,11 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iug.jerusalem_city.databinding.ItemSectionsBinding;
-import com.iug.jerusalem_city.models.SectionModel;
+import com.iug.jerusalem_city.data.models.SectionModel;
 import com.iug.jerusalem_city.ui.add_topic.AddTopicActivity;
 import com.iug.jerusalem_city.ui.city_climate.CityClimateActivity;
 import com.iug.jerusalem_city.ui.city_history.CityHistoryActivity;
 import com.iug.jerusalem_city.ui.city_information.CityInformationActivity;
+import com.iug.jerusalem_city.ui.favorite.FavoriteActivity;
 import com.iug.jerusalem_city.ui.last_news.LastNewsActivity;
 import com.iug.jerusalem_city.ui.settings.SettingsActivity;
 import com.iug.jerusalem_city.ui.touristic_monuments.TouristicMonumentsActivity;
@@ -105,6 +106,11 @@ public class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.Sectio
                 break;
 
             case 7:
+                intent = new Intent(context, FavoriteActivity.class);
+                context.startActivity(intent);
+                break;
+
+            case 8:
                 intent = new Intent(context, SettingsActivity.class);
                 context.startActivity(intent);
                 break;

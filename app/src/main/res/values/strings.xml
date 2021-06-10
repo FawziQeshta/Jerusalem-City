@@ -5,6 +5,14 @@
     <string name="drawer_close" />
 
     <string name="text_main">تُعدّ مدينة القدس من أعرق مدن العالم وأقدمها إذ يعود أقدم نشاط بشري فيها إلى ما يزيد عن 4000 عام قبل الميلاد، وسُكنت المدينة بشكل دائم في الفترة ما بين 3000-2800ق.م، وتُعتبر مدينة القدس ذات أهميّة دينية لأتباع الديانات السماوية الثلاث؛ الإسلامية، والمسيحية، واليهودية، ممّا ساهم في جعل المدينة مركزاً إدارياً ودينياً للعديد من الممالك والحضارات على مدى عصور طويلة</string>
+    <string name="main_txt">الرئيسية</string>
+    <string name="info_txt">معلومات عن المدينة</string>
+    <string name="history_txt">تاريخ المدينة</string>
+    <string name="climate_txt">مناخ المدينة</string>
+    <string name="touristical_monuments_txt">أهم المعالم السياحية</string>
+    <string name="last_news_txt">اخر الاخبار</string>
+    <string name="add_topic_txt">اضافة موضوع</string>
+    <string name="settings_txt">الاعدادات</string>
 
     <array name="spinner_add_topic">
         <item>أختر قسم الموضوع</item>

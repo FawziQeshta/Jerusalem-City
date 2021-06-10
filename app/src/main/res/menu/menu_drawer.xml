@@ -5,42 +5,47 @@
         <item
             android:id="@+id/menu_drawer_home_icon"
             android:icon="@drawable/ic_home"
-            android:title="الرئيسية"
+            android:title="@string/main_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_info_of_city_icon"
             android:icon="@drawable/ic_info"
-            android:title="معلومات عن المدينة"
+            android:title="@string/info_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_history_city_icon"
             android:icon="@drawable/ic_history"
-            android:title="تاريخ المدينة"
+            android:title="@string/history_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_climate_icon"
-            android:icon="@drawable/ic_climant"
-            android:title="مناخ المدينة"
+            android:icon="@drawable/ic_climate"
+            android:title="@string/climate_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_touristical_monuments_icon"
             android:icon="@drawable/ic_dome_of_the_rock"
-            android:title="أهم المعالم السياحية"
+            android:title="@string/touristical_monuments_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_news_icon"
             android:icon="@drawable/ic_last_news"
-            android:title="اخر الاخبار"
+            android:title="@string/last_news_txt"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/menu_drawer_save_icon"
+            android:icon="@drawable/ic_save_menu"
+            android:title="المواضيع المحفوظة"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_add_topic_icon"
             android:icon="@drawable/ic_add_topic"
-            android:title="اضافة موضوع"
+            android:title="@string/add_topic_txt"
             app:showAsAction="always"/>
         <item
             android:id="@+id/menu_drawer_settings_icon"
             android:icon="@drawable/ic_settings"
-            android:title="الاعدادات"
+            android:title="@string/settings_txt"
             app:showAsAction="always"/>
     </group>
 

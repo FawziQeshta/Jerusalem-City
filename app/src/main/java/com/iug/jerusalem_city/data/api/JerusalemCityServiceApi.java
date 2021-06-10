@@ -1,15 +1,9 @@
-package com.iug.jerusalem_city.api;
+package com.iug.jerusalem_city.data.api;
 
-import com.iug.jerusalem_city.models.LastNewsModel;
-
-import java.util.ArrayList;
+import com.iug.jerusalem_city.data.models.LastNewsModel;
 
 import retrofit2.Call;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface JerusalemCityServiceApi {
@@ -19,6 +13,7 @@ public interface JerusalemCityServiceApi {
                               @Query("from") String from,
                               @Query("to") String to,
                               @Query("sortBy") String sortBy,
+                              @Query("Language ") String Language,
                               @Query("apiKey") String apiKey);
 
 }

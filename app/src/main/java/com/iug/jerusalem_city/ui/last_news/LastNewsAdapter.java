@@ -1,13 +1,6 @@
 package com.iug.jerusalem_city.ui.last_news;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.iug.jerusalem_city.R;
 import com.iug.jerusalem_city.databinding.ItemTopicsApiLastNewsBinding;
-import com.iug.jerusalem_city.databinding.ItemTopicsBinding;
-import com.iug.jerusalem_city.models.Article;
-import com.iug.jerusalem_city.models.LastNewsModel;
-import com.iug.jerusalem_city.models.TopicModel;
-import com.iug.jerusalem_city.ui.play_video.PlayVideoActivity;
-import com.iug.jerusalem_city.ui.topic_details.TopicDetailsActivity;
+import com.iug.jerusalem_city.data.models.Article;
+import com.iug.jerusalem_city.data.models.LastNewsModel;
+import com.iug.jerusalem_city.data.models.TopicModel;
 import com.iug.jerusalem_city.utils.Utilities;
 
 import java.util.List;

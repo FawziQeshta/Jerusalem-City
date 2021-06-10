@@ -23,6 +23,7 @@ import com.iug.jerusalem_city.ui.add_topic.AddTopicActivity;
 import com.iug.jerusalem_city.ui.city_climate.CityClimateActivity;
 import com.iug.jerusalem_city.ui.city_history.CityHistoryActivity;
 import com.iug.jerusalem_city.ui.city_information.CityInformationActivity;
+import com.iug.jerusalem_city.ui.favorite.FavoriteActivity;
 import com.iug.jerusalem_city.ui.last_news.LastNewsActivity;
 import com.iug.jerusalem_city.ui.main.MainActivity;
 import com.iug.jerusalem_city.ui.settings.SettingsActivity;
@@ -119,6 +120,18 @@ public class NavigationDrawerSetting {
                                 @Override
                                 public void run() {
                                     intent = new Intent(activity.getBaseContext(), LastNewsActivity.class);
+                                    activity.startActivity(intent);
+                                }
+                            }, 280);
+                        }
+                        break;
+
+                    case R.id.menu_drawer_save_icon:
+                        if (!hostScreen.equals("FavoriteActivity")) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    intent = new Intent(activity.getBaseContext(), FavoriteActivity.class);
                                     activity.startActivity(intent);
                                 }
                             }, 280);
