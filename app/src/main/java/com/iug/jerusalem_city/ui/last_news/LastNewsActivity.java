@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LastNewsActivity extends AppCompatActivity implements LastNewsPresenter.LastNewsListener {
-
+// fawzi qeshta
     private ActivityLastNewsBinding binding;
 
     private List<Article> data;
