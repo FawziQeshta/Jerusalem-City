@@ -13,6 +13,7 @@
     <color name="colorSilverLite">#211F20</color>
     <color name="colorBlackLight">#EFEFEF</color>
     <color name="colorMenuHeader">#000000</color>
+    <color name="colorSeekBar">#00838F</color>
     <color name="colorNotification">#00838F</color>
     <color name="colorMenuHeaderTitle">#E0E0E0</color>
     <color name="colorReadMore">#00838F</color>
