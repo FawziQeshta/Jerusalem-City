@@ -79,12 +79,20 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFavoritesTopics"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/favorite_toolbar"
-            android:scrollbars="none" />
+            android:layout_below="@+id/favorite_toolbar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFavoritesTopics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
         <TextView
             android:id="@+id/tv_not_data"

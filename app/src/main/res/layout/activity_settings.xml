@@ -59,15 +59,15 @@
 
         <SeekBar
             android:id="@+id/settings_seekBar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:progress="0"
             android:max="2"
-            android:backgroundTint="@color/colorMenuHeader"
+            android:backgroundTint="@color/colorSeekBar"
             android:layoutDirection="rtl"
-            android:progressTint="@color/colorMenuHeader"
-            android:thumbTint="@color/colorMenuHeader" />
+            android:progressTint="@color/colorSeekBar"
+            android:thumbTint="@color/colorSeekBar" />
 
         <TextView
             android:layout_width="wrap_content"
