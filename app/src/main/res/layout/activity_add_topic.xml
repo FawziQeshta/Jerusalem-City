@@ -73,7 +73,7 @@
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/img_open_gallery"
+            android:id="@+id/img_add_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@+id/title_image"
@@ -84,10 +84,37 @@
             app:srcCompat="@drawable/add_photo" />
 
         <TextView
+            android:id="@+id/title_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_add_image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/almarai_bold"
+            android:gravity="right"
+            android:lineSpacingExtra="6dp"
+            android:text="أختر فيديو للموضوع (اختياري)"
+            android:textColor="@color/colorBlackSections"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/img_add_video"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/title_video"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="35dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_add_video" />
+
+        <TextView
             android:id="@+id/title_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_open_gallery"
+            android:layout_below="@+id/img_add_video"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
@@ -143,7 +170,7 @@
             android:id="@+id/btn_add_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/report_topic_radio_group"
             android:layout_marginStart="14dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="14dp"

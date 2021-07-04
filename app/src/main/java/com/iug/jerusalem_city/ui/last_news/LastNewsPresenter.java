@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import com.iug.jerusalem_city.data.api.ApiClient;
 import com.iug.jerusalem_city.data.models.Article;
 import com.iug.jerusalem_city.data.models.LastNewsModel;
-import com.iug.jerusalem_city.data.models.TopicModel;
 import com.iug.jerusalem_city.utils.Constants;
 
 import java.text.SimpleDateFormat;
@@ -40,7 +39,7 @@ public class LastNewsPresenter {
         String currentDate = getCurrentDate();
         String yesterday = getYesterdayDate();
 
-        Call<LastNewsModel> call = ApiClient.getInstance().getLastNews("القدس", yesterday, currentDate, "popularity", "ar", Constants.API_KEY);
+        Call<LastNewsModel> call = ApiClient.getInstance().getJerusalemCityLastNewsQuery("القدس", yesterday, currentDate, "popularity", "ar", Constants.API_KEY);
 
         call.enqueue(new Callback<LastNewsModel>() {
             @Override
