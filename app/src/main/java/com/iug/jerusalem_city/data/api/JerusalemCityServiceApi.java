@@ -9,11 +9,11 @@ import retrofit2.http.Query;
 public interface JerusalemCityServiceApi {
 
     @GET("everything")
-    Call<LastNewsModel> getLastNews(@Query("q") String q,
-                              @Query("from") String from,
-                              @Query("to") String to,
-                              @Query("sortBy") String sortBy,
-                              @Query("Language ") String Language,
-                              @Query("apiKey") String apiKey);
+    Call<LastNewsModel> getJerusalemCityLastNewsQuery(@Query("q") String q,
+                                                      @Query("from") String from,
+                                                      @Query("to") String to,
+                                                      @Query("sortBy") String sortBy,
+                                                      @Query("Language ") String Language,
+                                                      @Query("apiKey") String apiKey);
 
 }
